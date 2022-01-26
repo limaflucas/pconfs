@@ -1,0 +1,5 @@
+run command
+   # crontab -e
+
+configure the script to be run
+   @daily /path/to/script/daily_system_update.sh
