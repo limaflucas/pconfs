@@ -14,7 +14,7 @@ if [ -f $HOME/.bashrc ]; then
     mv $HOME/.bashrc $HOME/.bashrc.bkp
 fi
 
-echo "Creating links for editors's folder"
+echo "Creating configuration links"
 #EMACS
 ln -fs $CURRENT_DIR/editors/emacs ~/.emacs
 
