@@ -2,7 +2,6 @@
 
 CURRENT_DIR=`pwd`
 
-
 echo "Preserving current configuraration files"
 #EMACS
 if [ -f $HOME/.emacs ]; then
@@ -19,5 +18,5 @@ echo "Creating configuration links"
 ln -fs $CURRENT_DIR/editors/emacs ~/.emacs
 
 #BASH
-ln -fs $CURRENT_DIR/bash/.bashrc ~/.bashrc
+ln -fs $CURRENT_DIR/bash/bashrc ~/.bashrc
 source ~/.bashrc
