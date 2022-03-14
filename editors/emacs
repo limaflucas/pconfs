@@ -16,6 +16,8 @@
   (package-install 'aggressive-indent))
 (unless (package-installed-p 'nord-theme)
   (package-install 'nord-theme))
+(unless (package-installed-p 'treemacs)
+  (package-install 'treemacs))
 
 ;; enable lateral line numbers
 (global-display-line-numbers-mode)
