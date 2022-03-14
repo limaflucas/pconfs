@@ -9,3 +9,5 @@ PS1='[\u@\h \W]\$ '
 # SUDO completion
 complete -cf sudo
 
+# system upgrade
+alias upgrade='sudo pamac upgrade --no-confirm --force-refresh'
