@@ -3,6 +3,20 @@
 (package-initialize)
 (package-refresh-contents)
 
+;; install and enable packages
+(unless (package-installed-p 'flycheck)
+  (package-install 'flycheck))
+(unless (package-installed-p 'company)
+  (package-install 'company))
+(unless (package-installed-p 'tide)
+  (package-install 'tide))
+(unless (package-installed-p 'web-mode)
+  (package-install 'web-mode))
+(unless (package-installed-p 'aggressive-indent-mode)
+  (package-install 'aggressive-indent))
+(unless (package-installed-p 'nord-theme)
+  (package-install 'nord-theme))
+
 ;; enable lateral line numbers
 (global-display-line-numbers-mode)
 
@@ -20,16 +34,6 @@
 
 ;; enable aggressive indent
 (global-aggressive-indent-mode 1)
-
-;; install and enable packages
-(unless (package-installed-p 'flycheck)
-  (package-install 'flycheck))
-(unless (package-installed-p 'company)
-  (package-install 'company))
-(unless (package-installed-p 'tide)
-  (package-install 'tide))
-(unless (package-installed-p 'web-mode)
-  (package-install 'web-mode))
 
 ;; configuring web-mode
 (setq mweb-filename-extensions '(
