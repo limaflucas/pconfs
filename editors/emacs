@@ -12,7 +12,7 @@
   (package-install 'tide))
 (unless (package-installed-p 'web-mode)
   (package-install 'web-mode))
-(unless (package-installed-p 'aggressive-indent-mode)
+(unless (package-installed-p 'aggressive-indent)
   (package-install 'aggressive-indent))
 (unless (package-installed-p 'nord-theme)
   (package-install 'nord-theme))
@@ -64,6 +64,9 @@
 
 ;; settings TIDE hook
 (add-hook 'typescript-mode-hook #'setup-tide-mode)
+
+;; enabling windmove
+(windmove-default-keybindings)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
