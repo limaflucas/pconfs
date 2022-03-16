@@ -18,6 +18,8 @@
   (package-install 'nord-theme))
 (unless (package-installed-p 'treemacs)
   (package-install 'treemacs))
+(unless (package-installed-p 'rainbow-delimiters)
+  (package-install 'rainbow-delimiters))
 
 ;; enable lateral line numbers
 (global-display-line-numbers-mode)
