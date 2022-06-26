@@ -11,3 +11,6 @@ complete -cf sudo
 
 # system upgrade
 alias upgrade='sudo pamac upgrade --no-confirm --force-refresh'
+
+# emacs without x supper
+alias nxemacs='emacs --nw'
