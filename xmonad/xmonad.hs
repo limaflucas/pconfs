@@ -2,6 +2,7 @@ import XMonad
 
 import XMonad.Util.EZConfig
 import XMonad.Util.Loggers
+import XMonad.Util.SpawnOnce
 
 import XMonad.Hooks.EwmhDesktops
 
@@ -11,15 +12,17 @@ import XMonad.Hooks.StatusBar.PP
 
 
 main :: IO()
-main = xmonad
-       . ewmhFullscreen
-       . ewmh
-       . withEasySB (statusBarProp "xmobar" (pure myXmobarPP)) defToggleStrutsKey
-       $ myConfig
+main = do
+       xmonad
+     . ewmhFullscreen
+     . ewmh
+     . withEasySB (statusBarProp "xmobar" (pure myXmobarPP)) defToggleStrutsKey
+     $ myConfig
 
 myConfig = def {
     modMask = mod4Mask
-  , terminal = "terminator"
+  , terminal = "alacritty"
+  , startupHook = myStartupHook
   }
   `additionalKeysP`
     [
@@ -58,3 +61,7 @@ myXmobarPP = def
     yellow   = xmobarColor "#f1fa8c" ""
     red      = xmobarColor "#ff5555" ""
     lowWhite = xmobarColor "#bbbbbb" ""
+
+myStartupHook :: X ()
+myStartupHook = do
+      spawnOnce "picom --vsync -b"  

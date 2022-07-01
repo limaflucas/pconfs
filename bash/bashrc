@@ -10,7 +10,7 @@ PS1='[\u@\h \W]\$ '
 complete -cf sudo
 
 # system upgrade
-alias upgrade='sudo pamac upgrade --no-confirm --force-refresh'
+alias upgrade='sudo pacman -Syu --noconfirm'
 
-# emacs without x supper
+# emacs without X
 alias nxemacs='emacs --nw'

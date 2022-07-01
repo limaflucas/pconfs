@@ -1,0 +1,5 @@
+[user]
+	email = lcs.freirelima@gmail.com
+	name = Lucas Lima
+[core]
+	editor = emacs -nw

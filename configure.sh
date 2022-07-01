@@ -2,48 +2,78 @@
 
 CURRENT_DIR=`pwd`
 
+if [ ! -d $HOME/BKPs ]; then
+    mkdir $HOME/BKPs
+fi
+BKPS_DIR=$HOME/BKPs
+
 #EMACS
 echo "<<<   Configuring EMACS files   >>>"
-if [ -f $HOME/.emacs ]; then
-    mv $HOME/.emacs $HOME/.emacs.bkp
+EMACS=$HOME/.emacs
+if [ -f $EMACS ]; then
+    mv $EMACS $BKPS_DIR/.emacs.bkp
 fi
-ln -fs $CURRENT_DIR/editors/emacs $HOME/.emacs
+cp $CURRENT_DIR/emacs/emacs $EMACS
 
 #BASH
 echo "<<<   Configuring BASH files   >>>"
-if [ -f $HOME/.bashrc ]; then
-    mv $HOME/.bashrc $HOME/.bashrc.bkp
+BASHRC=$HOME/.bashrc
+if [ -f $BASHRC ]; then
+    mv $BASHRC $BKPS_DIR/.bashrc.bkp
 fi
-ln -fs $CURRENT_DIR/bash/bashrc $HOME/.bashrc
+cp $CURRENT_DIR/bash/bashrc $BASHRC
 
 #X
 echo "<<<   Configuring X files   >>>"
-if [ -f $HOME/.xinitrc ]; then
-    mv $HOME/.xinitrc $HOME/.xinitrc.bkp
+XINITRC=$HOME/.xinitrc
+if [ -f $XINITRC ]; then
+    mv $XINITRC $BKPS_DIR/.xinitrc.bkp
 fi
-ln -fs $CURRENT_DIR/X/xinitrc $HOME/.xinitrc
+cp $CURRENT_DIR/X/xinitrc $XINITRC
+
+#GIT
+echo "<<<   Configuring GIT files   >>>"
+GITCONFIG=$HOME/.gitconfig
+if [ -f $GITCONFIG ]; then
+    mv $GITCONFIG $BKPS_DIR/.gitconfig.bkp
+fi
+cp $CURRENT_DIR/git/gitconfig $GITCONFIG
 
 #PICOM
 echo "<<<   Configuring PICOM files   >>>"
-if [ -f $HOME/.config/picom/picom.conf ]; then
-    mv $HOME/.config/picom/picom.conf $HOME/.config/picom/picom.conf.bpk
-fi
-ln -fs $CURRENT_DIR/picom/picom.conf $HOME/.config/picom/picom.conf
+PICOM=$HOME/.config/picom/picom.conf
+if [ -f $PICOM ]; then
+    mv $PICOM $BKPS_DIR/picom.conf.bpk
+else
+    mkdir $HOME/.config/picom
+fi    
+cp $CURRENT_DIR/picom/picom.conf $PICOM
 
 #XMOBAR
 echo "<<<   Configuring XMOBAR files   >>>"
-if [ -f $HOME/.xmobarrc ]; then
-    mv $HOME/.xmobarrc $HOME/.xmobarrc.bkp
+XMOBAR=$HOME/.xmobarrc
+XMOBAR2=$HOME/.config/xmobar/xmobarrc
+if [ -f  $XMOBAR ]; then
+    mv $XMOBAR $BKPS_DIR/.xmobarrc.bkp
 fi
-ln -fs $CURRENT_DIR/xmobar/xmobarrc.hs $HOME/.xmobarrc
+if [ -f $XMOBAR2 ]; then
+    mv $XMOBAR2 $BKPS_DIR/xmobarrc.bkp
+else
+    mkdir $HOME/.config/xmobar
+fi
+cp $CURRENT_DIR/xmobar/xmobarrc.hs $XMOBAR2
+cp -r $CURRENT_DIR/xmobar/icons $HOME/.config/xmobar/.
 
 #XMONAD
 echo "<<<   Configuring XMONAD files   >>>"
-if [ -f $HOME/.xmonad/xmonad.hs ]; then
-    mv $HOME/.xmonad/xmonad.hs $HOME/.xmonad/xmonad.hs.bkp
+XMONAD=$HOME/.config/xmonad/xmonad.hs
+if [ -f $XMONAD ]; then
+    mv $XMONAD $BKPS_DIR/xmonad.hs.bkp
+else
+    mkdir $HOME/.config/xmonad
 fi
-ln -fs $CURRENT_DIR/xmonad/xmonad.hs $HOME/.xmonad/xmonad.hs
-exec xmonad --recompile | xargs echo "!!!   xmonad recompile result    !!!\n"
+cp $CURRENT_DIR/xmonad/xmonad.hs $XMONAD
+exec xmonad --recompile
 
 echo "Don't forget to run source ~/.bashrc to update bash' configuration"
 echo "Done for today! Bye ;)" 
