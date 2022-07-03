@@ -9,11 +9,15 @@ BKPS_DIR=$HOME/BKPs
 
 #EMACS
 echo "<<<   Configuring EMACS files   >>>"
-EMACS=$HOME/.emacs
-if [ -f $EMACS ]; then
-    mv $EMACS $BKPS_DIR/.emacs.bkp
+EMACS_HOME=$HOME/.emacs.d
+if [ -f $HOME/.emacs ]; then
+    mv $HOME/.emacs $BKPS_DIR/.emacs.bkp
+    rm -r $HOME/.emacs
 fi
-cp $CURRENT_DIR/emacs/emacs $EMACS
+if [ ! -d $EMACS_HOME ]; then
+    mkdir $EMACS_HOME
+fi
+cp -r $CURRENT_DIR/emacs/* $EMACS_HOME/.
 
 #BASH
 echo "<<<   Configuring BASH files   >>>"
