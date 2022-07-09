@@ -41,7 +41,7 @@
 ;; Install must have pacakges ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(dolist (package '(use-package yasnippet-snippets nord-theme sublime-themes spacemacs-theme))
+(dolist (package '(use-package yasnippet-snippets spacemacs-theme))
   (unless (package-installed-p package)
     (package-install package)))
 
@@ -66,12 +66,18 @@
 (require 'my-lsp)
 (require 'my-typescript)
 (require 'my-angular)
+(require 'my-haskell)
 
 ;;;;;;;;;;;;;;;;;;;;;
 ;; Themes settings ;;
 ;;;;;;;;;;;;;;;;;;;;;
 (load-theme 'spacemacs-dark t)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Buffers & Frames settings ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(use-package ace-window
+  :config (global-set-key (kbd "C-o") 'ace-window))
 
 
 (custom-set-variables

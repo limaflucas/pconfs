@@ -64,4 +64,7 @@ myXmobarPP = def
 
 myStartupHook :: X ()
 myStartupHook = do
-      spawnOnce "picom --vsync -b"  
+      spawnOnce "picom --vsync -b"
+      spawnOnce "alacritty" 
+      spawnOnce "firefox"
+      spawnOnce "mailspring"

@@ -13,4 +13,6 @@ complete -cf sudo
 alias upgrade='sudo pacman -Syu --noconfirm'
 
 # emacs without X
-alias nxemacs='emacs --nw'
+alias emacsnw='emacsclient --nw'
+# emacsclient with X support
+alias emacsc='emacsclient -c &'

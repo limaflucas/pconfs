@@ -2,6 +2,7 @@
 
 
 CURRENT_DIR=`pwd`
+CONFIG_RUN=$1
 
 configure_bkp_dir () {
     BKPS_DIR=$HOME/BKPs
@@ -18,6 +19,7 @@ configure_emacs () {
     
     if [ -f $HOME/.emacs ]; then
         mv $HOME/.emacs $BKPS_DIR/.emacs.bkp
+        cp -r $HOME/.emacs.d/ $BKPS_DIR/.
         rm -r $HOME/.emacs
     fi
     if [ ! -d $EMACS_HOME ]; then
@@ -104,8 +106,12 @@ configure_xmonad () {
     exec xmonad --recompile
 }
 
-printf "Which configuration would you like to update? "
-read CONFIG
+if [ ! $CONFIG_RUN ]; then
+    printf "Which configuration would you like to update? "
+    read CONFIG
+else
+    CONFIG=$CONFIG_RUN
+fi
 
 configure_bkp_dir
 

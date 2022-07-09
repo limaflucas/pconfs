@@ -1,0 +1,5 @@
+# Enable user-only emacs server
+systemctl --user enable emacs
+
+# Start emacs server
+systemctl --user start emacs
