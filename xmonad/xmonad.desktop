@@ -1,0 +1,7 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=xmonad
+Comment=Session with xmonad TWM
+#Exec=~/.xinitrc
+Exec=xmonad
+Type=XSession

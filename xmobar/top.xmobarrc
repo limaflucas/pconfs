@@ -1,0 +1,33 @@
+Config {
+    overrideRedirect = False
+  , allDesktops = True    
+  , font = "xft:Source Code Pro Medium-10:antialiasing=true"
+  , bgColor = "#000"
+  , fgColor = "#fff"
+  , position = TopH 1
+  , sepChar = "%"
+  , alignSep = "}{"
+  , iconRoot = "/home/lucas/.config/xmobar/icons/"
+  , template = "%_XMONAD_LOG_TOP% } %date% {%default:Master%<hspace=10/>%dynnetwork%<hspace=10/>%battery%<hspace=5/>"
+  , commands = [
+        Run XPropertyLog "_XMONAD_LOG_TOP"
+    ,   Run Battery [
+          "-t" , "<acstatus>"
+          ,"--"
+          , "-o", "<icon=battery-half.xpm/><hspace=3/><left>%(<timeleft>)"
+          , "-O", "<icon=battery-charging.xpm/><hspace=3/><left>%"
+          , "-i", "<icon=battery-full.xpm/><hspace=3/><left>%"
+          ] 50
+      , Run Date "%A, %d %B %X" "date" 10
+      , Run Volume "default" "Master" [
+          "-t", "<status><hspace=5/><volume>%"
+          ,"--"
+          ,"-O", "<icon=sound.xpm/>"
+          ,"-o", "<icon=mute.xpm/>" 
+          
+          ] 10
+      , Run DynNetwork [
+          "-t", "<icon=network.xpm/><hspace=3/><dev>"
+          ] 30
+      ]
+  }

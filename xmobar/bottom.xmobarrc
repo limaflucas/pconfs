@@ -1,0 +1,15 @@
+Config {
+    overrideRedirect = False
+  , allDesktops = True  
+  , font = "xft:iosevka-11:antialiasing=true"
+  , bgColor = "#000"
+  , fgColor = "#fff"
+  , position = BottomH 1
+  , sepChar = "%"
+  , alignSep = "}{"
+  , template = " } %_XMONAD_LOG_BOTTOM% { %kbd% "
+  , commands = [
+        Run XPropertyLog "_XMONAD_LOG_BOTTOM"
+      , Run Kbd []
+      ]
+  }

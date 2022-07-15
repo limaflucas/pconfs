@@ -106,6 +106,22 @@ configure_xmonad () {
     exec xmonad --recompile
 }
 
+#QTILE
+configure_qtile () {
+    printf "<<<   Configuring QTile files   >>>\n"
+    QTILE=$HOME/.config/qtile
+
+    if [ -f $QTILE ]; then
+        mv $QTILE $BKPS_DIR/.
+    else
+        mkdir $QTILE
+    fi
+    cp $CURRENT_DIR/qtile/config.py $QTILE/.
+    printf "<<<   Compiling QTile configuration   >>>\n"
+    echo `python3 -m py_compile $QTILE/config.py`
+    printf "<<<   QTile Configuration Completed   >>>\n"
+}
+
 if [ ! $CONFIG_RUN ]; then
     printf "Which configuration would you like to update? "
     read CONFIG
@@ -130,6 +146,8 @@ case $CONFIG in
         configure_xmobar ;;
     xmonad | XMONAD)
         configure_xmonad ;;
+    qtile | QTILE)
+        configure_qtile ;;
     all | ALL)
         configure_emacs
         configure_bash 
@@ -138,6 +156,7 @@ case $CONFIG in
         configure_picom
         configure_xmobar
         configure_xmonad
+        configure_qtile
         ;;
     *)
         printf "Unknown configuration!\n" ;;
