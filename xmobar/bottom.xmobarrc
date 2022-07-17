@@ -2,8 +2,8 @@ Config {
     overrideRedirect = False
   , allDesktops = True  
   , font = "xft:iosevka-11:antialiasing=true"
-  , bgColor = "#000"
-  , fgColor = "#fff"
+  , bgColor = "#323232"
+  , fgColor = "#14FFEC"
   , position = BottomH 1
   , sepChar = "%"
   , alignSep = "}{"

@@ -2,8 +2,8 @@ Config {
     overrideRedirect = False
   , allDesktops = True    
   , font = "xft:Source Code Pro Medium-10:antialiasing=true"
-  , bgColor = "#000"
-  , fgColor = "#fff"
+  , bgColor = "#212121"
+  , fgColor = "#14FFEC"
   , position = TopH 1
   , sepChar = "%"
   , alignSep = "}{"
@@ -20,10 +20,13 @@ Config {
           ] 50
       , Run Date "%A, %d %B %X" "date" 10
       , Run Volume "default" "Master" [
-          "-t", "<status><hspace=5/><volume>%"
+          "-t", "<status><hspace=3/><volume>%"
           ,"--"
-          ,"-O", "<icon=sound.xpm/>"
-          ,"-o", "<icon=mute.xpm/>" 
+          ,"-O", ""
+          ,"-o", "<icon=mute.xpm/>"
+          ,"-h", "<icon=sound-high.xpm/>"
+          ,"-l", "<icon=sound-low.xpm/>"
+          ,"-m", "<icon=sound-medium.xpm/>"
           
           ] 10
       , Run DynNetwork [
