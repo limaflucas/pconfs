@@ -122,6 +122,12 @@ configure_qtile () {
     printf "<<<   QTile Configuration Completed   >>>\n"
 }
 
+#Keyboard
+configure_keyboard () {
+    printf "<<<   Configuring keyboard layout   >>>\n"
+    exec $CURRENT_DIR/X/keyboard.sh
+}
+
 if [ ! $CONFIG_RUN ]; then
     printf "Which configuration would you like to update? "
     read CONFIG
@@ -148,6 +154,8 @@ case $CONFIG in
         configure_xmonad ;;
     qtile | QTILE)
         configure_qtile ;;
+    keyboard | KEYBOARD)
+        configure_keyboard ;;
     all | ALL)
         configure_emacs
         configure_bash 
