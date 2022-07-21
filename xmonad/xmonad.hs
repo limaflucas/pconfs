@@ -32,9 +32,9 @@ myConfig = def {
       ("M-f", spawn "firefox")
     , ("<XF86MonBrightnessUp>",   spawn "light -A 10")
     , ("<XF86MonBrightnessDown>", spawn "light -U 10")
-    , ("<XF86AudioRaiseVolume>",  spawn "amixer set Master 3%+")
-    , ("<XF86AudioLowerVolume>",  spawn "amixer set Master 3%-")
-    , ("<XF86AudioMute>",         spawn "amixer set Master toggle")
+    , ("<XF86AudioRaiseVolume>",  spawn "pactl set-sink-volume @DEFAULT_SINK@ +1%")
+    , ("<XF86AudioLowerVolume>",  spawn "pactl set-sink-volume @DEFAULT_SINK@ -1%")
+    , ("<XF86AudioMute>",         spawn "pactl set-sink-mute @DEFAULT_SINK@ toggle")
     ]
 
 topXmobar    = statusBarPropTo "_XMONAD_LOG_TOP"    "xmobar ~/.config/xmobar/top.xmobarrc"    (pure topXmobarPP)
